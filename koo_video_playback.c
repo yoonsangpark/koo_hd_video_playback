@@ -218,7 +218,7 @@ static HD_RESULT set_dec_param(HD_PATH_ID video_dec_path, UINT32 dec_type)
 		sprintf(file_name, "/mnt/sd/video_bs_%d_%d_%s_svc.dat", VDO_SIZE_W, VDO_SIZE_H, codec_name);
 #else
 		//sprintf(file_name, "/mnt/sd/video_bs_%d_%d_%s.dat", VDO_SIZE_W, VDO_SIZE_H, codec_name);
-		sprintf(file_name, "/mnt/sd/rec_1920_1080_1_h265.mp4");
+		sprintf(file_name, "/mnt/sd/rec_1920_1080_1_h264.mp4");
 #endif
 		if ((bs_fd = fopen(file_name, "rb")) == NULL) {
 			printf("open file (%s) fail !!\r\n", file_name);
@@ -228,7 +228,7 @@ static HD_RESULT set_dec_param(HD_PATH_ID video_dec_path, UINT32 dec_type)
 		snprintf(file_name, sizeof(file_name), "/mnt/sd/video_bs_%d_%d_%s_svc.len", VDO_SIZE_W, VDO_SIZE_H, codec_name);
 #else
 		//snprintf(file_name, sizeof(file_name), "/mnt/sd/video_bs_%d_%d_%s.len", VDO_SIZE_W, VDO_SIZE_H, codec_name);
-		snprintf(file_name, sizeof(file_name), "/mnt/sd/rec_1920_1080_1_h265.len");
+		snprintf(file_name, sizeof(file_name), "/mnt/sd/rec_1920_1080_1_h264.len");
 #endif
 		if ((bslen_fd = fopen(file_name, "rb")) == NULL) {
 			printf("open file (%s) fail !!\r\n", file_name);
@@ -680,7 +680,7 @@ static void *feed_bs_thread(void *arg)
 	sprintf(file_name, "/mnt/sd/video_bs_%d_%d_%s_svc.dat", VDO_SIZE_W, VDO_SIZE_H, codec_name);
 #else
 	//sprintf(file_name, "/mnt/sd/video_bs_%d_%d_%s.dat", VDO_SIZE_W, VDO_SIZE_H, codec_name);
-	sprintf(file_name, "/mnt/sd/rec_1920_1080_1_h265.mp4");
+	sprintf(file_name, "/mnt/sd/rec_1920_1080_1_h264.mp4");
 #endif
 	if ((bs_fd = fopen(file_name, "rb")) == NULL) {
 		printf("open file (%s) fail !!....\r\nPlease copy test pattern to SD Card !!\r\n\r\n", file_name);
@@ -692,7 +692,7 @@ static void *feed_bs_thread(void *arg)
 	snprintf(file_name, sizeof(file_name), "/mnt/sd/video_bs_%d_%d_%s_svc.len", VDO_SIZE_W, VDO_SIZE_H, codec_name);
 #else
 	//snprintf(file_name, sizeof(file_name), "/mnt/sd/video_bs_%d_%d_%s.len", VDO_SIZE_W, VDO_SIZE_H, codec_name);
-	snprintf(file_name, sizeof(file_name), "/mnt/sd/rec_1920_1080_1_h265.len");
+	snprintf(file_name, sizeof(file_name), "/mnt/sd/rec_1920_1080_1_h264.len");
 #endif
 	if ((bslen_fd = fopen(file_name, "rb")) == NULL) {
 		printf("open file (%s) fail !!....\r\nPlease copy test pattern to SD Card !!\r\n\r\n", file_name);
@@ -841,9 +841,9 @@ quit_rel_fd:
 EXAMFUNC_ENTRY(hd_video_playback, argc, argv)
 {
 	HD_RESULT ret;
-    INT key;
+    	INT key;
 	VIDEO_PLAYBACK stream[1] = {0}; //0: main stream
-	UINT32 dec_type = 0;
+	UINT32 dec_type = 1;
 	UINT32 out_type = 0;
 	HD_DIM main_dim = {0};
 
